@@ -1,0 +1,2 @@
+bool exerciseMultiSign();
+int foo();

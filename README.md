@@ -126,6 +126,23 @@ the demo requires
 * [cmake](https://cmake.org)
 
 ### Build and run
+For Python(Ubuntu)
+```
+# build boost
+# download boost and uncompress
+$ ./bootstrap.sh --prefix=/path/to/boost/install
+$ ./b2 cxxflags=-fPIC cflags=-fPIC -j8 install
+$ export BOOST_LIBRARYDIR=/path/to/boost/install
+$ cd ${YOUR_RIPPLE_LIBPP_DIRECTORY}
+$ cmake .
+$ make
+$ cd src/test
+$ ipython
+>>> import impl
+>>> impl.bar()
+```
+
+
 
 For linux and other unix-like OSes, run the following commands:
 

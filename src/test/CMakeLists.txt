@@ -82,14 +82,24 @@ endif()
 
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-add_executable(ripplelibppdemo
-    ${demo_src}
-    $<TARGET_OBJECTS:ripplelibpp>)
+#add_executable(ripplelibppdemo
+#    ${demo_src}
+#    $<TARGET_OBJECTS:ripplelibpp>)
+
+include(UseCython)
+set_source_files_properties(
+    ${CMAKE_CURRENT_SOURCE_DIR}/impl.pyx PROPERTIES CYTHON_IS_CXX TRUE )
+cython_add_module(impl ${CMAKE_CURRENT_SOURCE_DIR}/impl.pyx ${demo_src} $<TARGET_OBJECTS:ripplelibpp>)
 
 set_startup_project(ripplelibppdemo)
 
-target_link_libraries(ripplelibppdemo
+#target_link_libraries(ripplelibppdemo
+#    ${OPENSSL_LIBRARIES}
+#    ${SANITIZER_LIBRARIES})
+
+target_link_libraries(impl
     ${OPENSSL_LIBRARIES}
     ${SANITIZER_LIBRARIES})
 
-link_common_libraries(ripplelibppdemo)
+#link_common_libraries(ripplelibppdemo)
+link_common_libraries(impl)

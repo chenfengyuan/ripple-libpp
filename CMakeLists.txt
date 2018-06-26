@@ -55,6 +55,8 @@
 # Don't put any code above or in this block, unless it
 # has similar constraints.
 cmake_minimum_required(VERSION 3.1.0)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake )
 list(APPEND CMAKE_MODULE_PATH
   "${CMAKE_CURRENT_SOURCE_DIR}/extras/rippled/Builds/CMake")
 include(CMakeFuncs)
