@@ -132,8 +132,10 @@ For Python(Ubuntu)
 # download boost and uncompress
 $ ./bootstrap.sh --prefix=/path/to/boost/install
 $ ./b2 cxxflags=-fPIC cflags=-fPIC -j8 install
-$ export BOOST_LIBRARYDIR=/path/to/boost/install
+$ export BOOST_ROOT=/home/bbc/git/boost/boost_install
 $ cd ${YOUR_RIPPLE_LIBPP_DIRECTORY}
+$ git submodule init
+$ git submodule update
 $ cmake .
 $ make
 $ cd src/test
